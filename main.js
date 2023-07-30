@@ -12,7 +12,7 @@ const restRoute=require("./routes/crud_rest");
 const mongoose = require('mongoose');
 const {log}=require("./middlewares/middleware");
 const fileUploadRoutes=require("./routes/fileUploadroutes");
-
+const cors=require("cors");
 
 
 const dbConnect=()=>{
@@ -25,6 +25,7 @@ const dbConnect=()=>{
 // How to get 
 // route params
 // query params
+app.use(cors());
 app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
 app.set('views', './views');
