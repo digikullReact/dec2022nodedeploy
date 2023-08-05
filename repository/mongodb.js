@@ -47,24 +47,25 @@ const insertMany=(data)=>{
 }
 
 const aggregateSalary=async ()=>{
-    try {
-        let result= await userModel.aggregate([
+   
+     userModel.aggregate([
             {
                 $group:{
-                    "_id":null,
+                   
                     "totalSalary":{
                         $sum:"$salary"
                     }
                 }
             }
     
-        ]).explain()
-        conosle.log(result);
+        ]).exec().then(data=>{
+            console.log("Data---",data);
+        }).catch(err=>{
+            console.log("Error---",err);
+        })
+       
         
-    } catch (error) {
-        console.log("ERror---",error.toString());
-        
-    }
+    
   
 
 }

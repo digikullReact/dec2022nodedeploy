@@ -1,9 +1,9 @@
 const express=require("express");
 const router=express.Router();
-const {saveData,getData,deleteData,getDataById,editData,aggregateSalary}=require("../repository/mongodb");
+const {saveData,getData,deleteData,getDataById,editData,aggregateSalary}=require("../repository/mysql");
 const {verifyToken}=require("../middlewares/auth");
 
-router.use(verifyToken);
+//router.use(verifyToken);
 router.get("/",async  (req, res) => {
 
     const data=await getData()

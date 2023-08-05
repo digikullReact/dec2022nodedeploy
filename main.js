@@ -9,16 +9,24 @@ const templateEngineRoutes=require("./routes/templateengine");
 const crudRoute=require("./routes/crud");
 const authRoutes=require("./routes/authRoutes");
 const restRoute=require("./routes/crud_rest");
+const mysqlRoute=require("./routes/mysql_rest");
+
 const mongoose = require('mongoose');
 const {log}=require("./middlewares/middleware");
 const fileUploadRoutes=require("./routes/fileUploadroutes");
 const cors=require("cors");
+const {sequelize} = require("./repository/mysql");
 
 
 const dbConnect=()=>{
    return  mongoose.connect('mongodb+srv://dbuser:E1yXLwftoemYcA42@cluster0.jkkvfwg.mongodb.net/?retryWrites=true&w=majority')
 
 
+}
+
+const mysqlConnect=()=>{
+    return sequelize.authenticate();
+      
 }
 
 
@@ -38,6 +46,8 @@ app.use("/html",htmlRoutes);
 app.use("/template",templateEngineRoutes);
 app.use("/crud",crudRoute);
 app.use("/rest",restRoute);
+app.use("/mysql",mysqlRoute);
+
 app.use("/auth",authRoutes);
 app.use("/file",fileUploadRoutes);
 
@@ -50,7 +60,17 @@ app.use("/",rootRouter);
 
 
 
- 
+mysqlConnect().then(data=>{
+    console.log("Connected with Mysql-------")
+
+app.listen("8080", () => {
+    console.log("Server running at port 8080")
+})
+
+}).catch(err=>{
+    console.log(err);
+})
+ /*
 dbConnect().then(data=>{
     console.log("Connected with Mongdob----")
 
@@ -63,6 +83,7 @@ app.listen("8080", () => {
 })
 
 
+*/
 
 
 
