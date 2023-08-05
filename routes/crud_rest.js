@@ -80,12 +80,14 @@ router.get("/:id",async  (req, res) => {
 router.get("/aggregateSalary",async  (req, res) => {
    try {
     const data=await aggregateSalary()
-    res.json({
-        data:data
-    })
+    res.json(data);
     
    } catch (error) {
-     console.log(error);
+    res.json({
+        data:error.toString()
+    })
+
+    // console.log(error);
    }
    
 
