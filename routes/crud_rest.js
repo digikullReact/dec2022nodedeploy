@@ -1,6 +1,6 @@
 const express=require("express");
 const router=express.Router();
-const {saveData,getData,deleteData,getDataById,editData}=require("../repository/mongodb");
+const {saveData,getData,deleteData,getDataById,editData,aggregateSalary}=require("../repository/mongodb");
 const {verifyToken}=require("../middlewares/auth");
 
 router.use(verifyToken);
@@ -76,6 +76,21 @@ router.get("/:id",async  (req, res) => {
     })
 
 })
+
+router.get("/aggregateSalary",async  (req, res) => {
+   try {
+    const data=await aggregateSalary()
+    res.json({
+        data:data
+    })
+    
+   } catch (error) {
+     console.log(error);
+   }
+   
+
+})
+
 
 
 

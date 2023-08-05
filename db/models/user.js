@@ -7,6 +7,7 @@ const userSchema = new Schema({
     email:String,
     about:String,
     image:String,
+    salary:Number,
     username:{
       type:String,
       unique: true 

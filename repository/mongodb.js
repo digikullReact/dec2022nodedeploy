@@ -46,6 +46,21 @@ const insertMany=(data)=>{
 
 }
 
+const aggregateSalary=(data)=>{
+    return userModel.aggregate([
+        {
+            "$group":{
+                "_id":null,
+                "totalSalary":{
+                    "$sum":"$salary"
+                }
+            }
+        }
+
+    ]).exec();
+
+}
+
 
 
 
@@ -56,7 +71,8 @@ module.exports={
     getDataById,
     editData,
     insertMany,
-    getDataByUsername
+    getDataByUsername,
+    aggregateSalary
     
     
 }
