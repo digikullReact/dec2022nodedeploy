@@ -1,6 +1,6 @@
 const express=require("express");
 const router=express.Router();
-const {saveData,getData,deleteData,getDataById,editData,aggregateSalary}=require("../repository/mysql");
+const {saveData,getData,deleteData,getDataById,editData,insertMany}=require("../repository/mysql");
 const {verifyToken}=require("../middlewares/auth");
 
 //router.use(verifyToken);
@@ -15,7 +15,27 @@ router.get("/",async  (req, res) => {
 
 //
 
-
+router.post("/bulk", (req, res) => {
+    insertMany(req.body).then(result=>{
+     res.json({
+         message:"success",
+         data:result
+     })
+ 
+    }).catch(err=>{
+     console.log(err);
+     res.json({
+         message:"failed",
+         data:null,
+         err:err
+     })
+    })
+ 
+   
+ 
+   ///  console.log("Form incoming",req.body)
+ 
+ })
 
 
 

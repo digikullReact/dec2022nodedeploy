@@ -32,6 +32,11 @@ const sequelize = new Sequelize('digikulldecbatch', 'admin', 'BRetC61c', {
   
   }
 const editData=(data)=>{
+    return User.update(data,{
+        where:{
+            id:data.id
+        }
+    })
  
  }
 
@@ -44,12 +49,24 @@ const getData=(data)=>{
 
 
 const deleteData=(id)=>{
+    return User.destroy({
+        where:{
+            id:id
+        }
+    })
 
 
 }
 // So complete these method getData by ID
 
 const getDataById=(id)=>{
+
+   // return User.findByPk(id);
+   return User.findOne({
+    where:{
+        id:id
+    }
+   })
 
  
 
@@ -58,12 +75,19 @@ const getDataById=(id)=>{
 
 const getDataByUsername=(username)=>{
 
+    return User.findOne({
+        where:{
+            username:username
+        }
+       })
+
  
 
 
 }
 
 const insertMany=(data)=>{
+    return User.bulkCreate(data);
 
 }
 
