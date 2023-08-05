@@ -24,7 +24,6 @@ const sequelize = new Sequelize('digikulldecbatch', 'admin', 'BRetC61c', {
 
     image: DataTypes.TEXT,
    salary: DataTypes.INTEGER,
-   date:DataTypes.TIME
   });
 
   const saveData=(data)=>{
@@ -37,6 +36,7 @@ const editData=(data)=>{
  }
 
 const getData=(data)=>{
+    return User.findAll();
 
 
 }
