@@ -4,6 +4,10 @@
  * SELECT * FROM `users` ;
  * UPDATE users SET name="Louis" ,username="louis1" WHERE id=1;
  * DELETE FROM users WHERE id=1;
+ * SELECT * FROM `users` LIMIT 5 OFFSET 5
+ * SELECT * FROM `users`   WHERE name LIKE 'k%' any name that starts with k
+ * SELECT * FROM `users`   WHERE name LIKE '%h%' any name that has h in between
+ * SELECT * FROM `users`   ORDER BY name ASC  -->it will give the rows sorted by name in ASC order
  * 
  */
 
