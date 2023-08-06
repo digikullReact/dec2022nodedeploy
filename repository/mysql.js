@@ -50,6 +50,24 @@ const getData=(data)=>{
 
 }
 
+const getDataPagination=async (pageNumber=0,limit=10,search,sortOrder="asc",sortField="username")=>{
+    const t0 = performance.now();
+    const re=new RegExp(search, 'gi');
+    sortOrder=sortOrder=="desc"?-1:0;
+
+const data=  await Promise.all([User.findAll({limit,offset:pageNumber*limit}),
+    
+    userModel.count()])
+
+  
+
+  const t1 = performance.now();
+console.log(`Call to doSomething took ${(t1 - t0)/1000} seconds.`);
+  
+return data;
+
+}
+
 
 
 const deleteData=(id)=>{
@@ -105,5 +123,6 @@ const insertMany=(data)=>{
     insertMany,
     getDataByUsername,
     getDataById,
-    deleteData
+    deleteData,
+    getDataPagination
   }
