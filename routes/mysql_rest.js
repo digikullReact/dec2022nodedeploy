@@ -1,6 +1,6 @@
 const express=require("express");
 const router=express.Router();
-const {saveData,getData,deleteData,getDataById,editData,insertMany}=require("../repository/mysql");
+const {saveData,getData,deleteData,getDataById,editData,insertMany,getDataPagination}=require("../repository/mysql");
 const {verifyToken}=require("../middlewares/auth");
 
 //router.use(verifyToken);
