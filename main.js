@@ -57,19 +57,35 @@ app.use("/file",fileUploadRoutes);
 app.use("/products",productRouter)
 app.use("/",rootRouter);
 
+if (process.argv[2]=="mysql"){
+    mysqlConnect().then(data=>{
+        console.log("Connected with Mysql-------")
+    
+    app.listen("8080", () => {
+        console.log("Server running at port 8080")
+    })
+    
+    }).catch(err=>{
+        console.log(err);
+    })
+
+}else{
+    dbConnect().then(data=>{
+        console.log("Connected with Mongdob----")
+    
+    app.listen("8080", () => {
+        console.log("Server running at port 8080")
+    })
+    
+    }).catch(err=>{
+        console.log(err);
+    })
+    
+
+}
 
 
 
-mysqlConnect().then(data=>{
-    console.log("Connected with Mysql-------")
-
-app.listen("8080", () => {
-    console.log("Server running at port 8080")
-})
-
-}).catch(err=>{
-    console.log(err);
-})
  /*
 dbConnect().then(data=>{
     console.log("Connected with Mongdob----")

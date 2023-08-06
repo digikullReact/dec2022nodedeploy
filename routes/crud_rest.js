@@ -1,14 +1,28 @@
 const express=require("express");
 const router=express.Router();
-const {saveData,getData,deleteData,getDataById,editData,aggregateSalary}=require("../repository/mongodb");
+const {saveData,getData,deleteData,getDataById,editData,aggregateSalary, getDataPagination}=require("../repository/mongodb");
 const {verifyToken}=require("../middlewares/auth");
 
-router.use(verifyToken);
+//router.use(verifyToken);
 router.get("/",async  (req, res) => {
 
     const data=await getData()
     res.json({
         data:data
+    })
+
+})
+
+router.get("/paginated",async  (req, res) => {
+    //limit and pageNumber will be getting req query
+    const pageNumber=req.query["page"];
+    const limit=req.query["limit"];
+    const search=req.query["search"];
+
+   const data=await getDataPagination(pageNumber,limit,search);
+    res.json({
+        data:data[0],
+        total:data[1]
     })
 
 })

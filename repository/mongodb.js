@@ -16,6 +16,23 @@ const getData=(data)=>{
 
 }
 
+const getDataPagination=async (pageNumber=0,limit=10,search)=>{
+    const t0 = performance.now();
+    const re=new RegExp(search, 'gi');
+const data=  await Promise.all([userModel.find({name:{ $regex:re }}).skip(pageNumber*limit).limit(limit),
+    
+    userModel.count()])
+
+  
+
+  const t1 = performance.now();
+console.log(`Call to doSomething took ${(t1 - t0)/1000} seconds.`);
+  
+return data;
+
+}
+
+
 
 
 const deleteData=(id)=>{
@@ -81,7 +98,8 @@ module.exports={
     editData,
     insertMany,
     getDataByUsername,
-    aggregateSalary
+    aggregateSalary,
+    getDataPagination
     
     
 }
