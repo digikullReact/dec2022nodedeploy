@@ -18,8 +18,9 @@ router.get("/paginated",async  (req, res) => {
     const pageNumber=req.query["page"];
     const limit=req.query["limit"];
     const search=req.query["search"];
+    const sortOrder=req.query["sortOrder"]
 
-   const data=await getDataPagination(pageNumber,limit,search);
+   const data=await getDataPagination(pageNumber,limit,search,sortOrder);
     res.json({
         data:data[0],
         total:data[1]

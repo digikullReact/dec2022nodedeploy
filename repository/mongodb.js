@@ -16,10 +16,12 @@ const getData=(data)=>{
 
 }
 
-const getDataPagination=async (pageNumber=0,limit=10,search)=>{
+const getDataPagination=async (pageNumber=0,limit=10,search,sortOrder="asc",sortField="username")=>{
     const t0 = performance.now();
     const re=new RegExp(search, 'gi');
-const data=  await Promise.all([userModel.find({name:{ $regex:re }}).skip(pageNumber*limit).limit(limit),
+    sortOrder=sortOrder=="desc"?-1:0;
+
+const data=  await Promise.all([userModel.find({name:{ $regex:re }}).skip(pageNumber*limit).limit(limit).sort({[sortField]:sortOrder}),
     
     userModel.count()])
 
