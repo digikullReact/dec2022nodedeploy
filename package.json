@@ -23,6 +23,7 @@
     "mysql2": "^3.6.0",
     "sequelize": "^6.32.1",
     "sinon": "^15.2.0",
+    "socket.io": "^4.7.2",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
