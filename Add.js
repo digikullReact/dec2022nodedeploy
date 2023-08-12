@@ -7,11 +7,21 @@ function SubtractTwoNumbers(a,b){
     return a-b;
 
 }
+function sumArray(arr){
+   return arr.reduce((acc,ele)=>acc+ele,0);
+
+}
+
+function getProperty(obj,key){
+    return obj[key] ?obj[key]:null;
+ }
 ///console.log(AddTwoNumbers(3,4));
 
 module.exports={
     AddTwoNumbers,
-    SubtractTwoNumbers
+    SubtractTwoNumbers,
+    sumArray,
+    getProperty
 }
 
 /**

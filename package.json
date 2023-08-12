@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha test/**/*.test.js"
   },
   "keywords": [],
   "author": "",
@@ -12,6 +12,7 @@
   "dependencies": {
     "bcrypt": "^5.1.0",
     "chai": "^4.3.7",
+    "chai-http": "^4.4.0",
     "cloudinary": "^1.39.0",
     "connect-multiparty": "^2.2.0",
     "cors": "^2.8.5",
